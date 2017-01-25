@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width = device-width, initial-scale = 1">
+        <title>Voorspelling titels bij merk</title>
+        <link rel="stylesheet" href="static/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="static/css/main.css"> 
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid Sans">
+    </head>
+    
+    <body ng-app="brandApp">
+        <div ng-controller='myCtrl'>
+            <nav class="navbar navbar-default navbar-static-top"> 
+                <div class="container">
+                    <h2 id="navbarTitle">Voorspel merk van een product op basis van de titel</h2>
+                </div>        
+            </nav>
+            <div class="container">
+                <div class="page-header">
+<!--                 <span>Predictions are //predictions_data//</span> -->
+                    <div class="form-group">
+                        <label for="inputlg" id="titel_label"><h3 id="textInvuller">Vul een titel van een product in:</h3> </label>
+                        <input type="text" class="form-control input-lg" id="inputlg" ng-model="productTitle" ng-model-options='{debounce: 1000}' ng-change="doSearch()"> 
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2"><h3 id="PartyId">Party Id </h3></div>
+                        <div class="col-md-2"><h3 id="Merknaam">Merknaam</h3></div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-2"><h3 id="Probability">Probability</h3></div>
+                    </div>
+                <!-- Per merk een grafiek -->
+                <div ng-repeat="prediction in predictions_data | limitTo: 3" ng-if="prediction.prob>0.005">
+                    <div class="row">
+                        <div class="col-md-2" >
+                            <!-- Dit roept mijn eigen directive aan om merk log op te halen -->
+                            <!-- <brand-picture title="//prediction.brand_id//"></brand-picture> --> <!-- het deel title="//prediction.brand_id//" geeft de variabele title mee aan de call van de directive -->
+                        </div>    
+                        <div class="col-md-2">
+                            //prediction.brand_id//
+                        </div>
+                        <div class="col-md-2">
+                            //prediction.brand_name//
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Dit roept de Angular Chart Directive aan -->
+                            <canvas id="bar" class="chart chart-horizontalBar" chart-data="[prediction.prob]" chart-colors="['#d3e5f6']" chart-labels="[prediction.brand_name]" chart-series="series" chart-options="options"></canvas>
+                        </div>
+                        <div class="col-md-2">
+                            //prediction.prob*100 | number:1//%
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+        <script type="text/javascript" src="static/js/Chart.min.js"></script>
+        <script type="text/javascript" src="static/js/jquery-3.1.0.min.js"></script>
+        <script type="text/javascript" src="static/js/angular.min.js"></script>
+        <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+        
+        <!-- This library provides Directives for using ChartJS in Angular -->
+        <script type="text/javascript" src="static/js/angular-chart.min.js"></script>
+        
+        <!-- Angular Modules -->
+        <script type="text/javascript" src="static/js/custom/app.js"></script> 
+        
+        <!-- Angular Controllers -->
+        <script type="text/javascript" src="static/js/custom/input_controller.js"></script>
+        
+        <!-- Angular Factories / Services -->
+        <script type="text/javascript" src="static/js/custom/predictions_factory.js"></script>
+        
+        <!-- Directive to get the brand picture -->
+        <script type="text/javascript" src="static/js/custom/brand_picture_directive.js"></script>
+    </body>
+    
+</html>
