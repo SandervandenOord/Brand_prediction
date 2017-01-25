@@ -7,6 +7,10 @@ Files for getting products:
 - allProducts_leverbaar2.pig is a pig script for getting all Products that are deliverable from an HBase storage
 - pyUDF4.py is for cleaning up descriptions with very raw text
 
+Files for creating models:
+- create_model_beauty_and_health.ipynb ipython notebook to build a simple model (support vector machine) based on the product title
+- beauty_leverbaar_20160729.txt simple data file to be used for the model fitting
+
 Files for webapp:
 - index.html is the frontend of the webapp for predictions
 - folder /Static contains all css / js (Angular) for the webapp 
