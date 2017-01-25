@@ -1,0 +1,20 @@
+.col-md-1, .col-md-2, .col-md-3 {
+/*     border: 1px solid; */
+    text-align:center;
+    padding-top: 60px;
+    font-size: 1.5em
+}
+
+.navbar-default {
+    background-color: #3366cc;
+    color: #FFFFFF;
+}
+
+body {
+    font-family: 'Droid Sans';
+}
+
+#navbarTitle, #textInvuller, #Merknaam, #Probability, #PartyId {
+    font-weight: bold;
+}
+
