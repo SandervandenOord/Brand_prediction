@@ -17,3 +17,7 @@ Files for webapp:
 - brand_predict.py is launching the Flask service (locally) that also makes predictions per brand
 - brand_translator2.pkl is a dictionary that translates a brand_id to a brand_name (to make predictions more readable)
 
+Extra files:
+- 20161020 - Mooi Gezond.ipynb Get some insights in how the model performs
+- 20161025 Separate model for every category.ipynb Build a model for all categories. This works for some but not all categories
+
